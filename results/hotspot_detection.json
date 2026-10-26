@@ -1,0 +1,17 @@
+{
+  "model": "Gradient Boosting (Poisson)",
+  "k": 8,
+  "precision_at_k_deteriorating": 0.5,
+  "random_baseline": 0.13333333333333333,
+  "overlap_with_actual_future_top_k": 0.625,
+  "flagged_trains": [
+    "18648",
+    "15300",
+    "18033",
+    "20741",
+    "12336",
+    "17576",
+    "19655",
+    "18911"
+  ]
+}

@@ -1,0 +1,13 @@
+Policy,Severity,Mean wait (min),P90 wait (min)
+FIFO (current),Critical,535.1,1429.8
+FIFO (current),High,569.9,1478.8
+FIFO (current),Medium,572.3,1488.5
+FIFO (current),Low,565.4,1510.8
+AI priority (proposed),Critical,31.9,72.3
+AI priority (proposed),High,61.6,138.9
+AI priority (proposed),Medium,195.2,470.8
+AI priority (proposed),Low,1737.9,5479.2
+Oracle priority (upper bound),Critical,30.2,76.1
+Oracle priority (upper bound),High,49.7,122.2
+Oracle priority (upper bound),Medium,154.5,381.3
+Oracle priority (upper bound),Low,1866.2,5022.5

@@ -1,0 +1,4 @@
+Model,ROC-AUC,PR-AUC,Breaches caught in top-20% risk
+Prior rate (no model),0.5,0.2831,
+Logistic Regression,0.7306,0.5158,
+Gradient Boosting,0.718,0.4962,0.3639

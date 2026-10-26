@@ -1,0 +1,6 @@
+Method,Accuracy,Macro-F1,Quadratic kappa,Critical recall,Critical+High recall,Under-triage rate,Mean cost
+Keyword rules only,0.4825,0.3581,0.2994,0.7054,0.1134,0.2417,1.0783
+Linear SVM,0.8767,0.8765,0.8727,0.9093,0.8834,0.0614,0.25
+Logistic Regression (arg-max),0.8671,0.8562,0.8386,0.9093,0.8953,0.0641,0.2665
+LR + minimum expected cost (proposed),0.8355,0.7884,0.7384,0.949,0.9686,0.0158,0.1954
+LR + min. cost + safety lexicon,0.8327,0.7843,0.7329,0.949,0.9686,0.0158,0.1982

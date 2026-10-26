@@ -1,0 +1,5 @@
+Model,Accuracy,Macro-F1,Weighted-F1,Dept. routing acc.,Train time (s),Latency (ms/complaint)
+Complement Naive Bayes,0.9317,0.9063,0.9318,0.9423,0.0588,0.002
+Logistic Regression,0.9381,0.9035,0.9392,0.9455,6.3539,0.002
+Linear SVM (calibrated),0.9505,0.9342,0.9502,0.9593,5.7298,0.0078
+Random Forest,0.929,0.9038,0.9298,0.9394,19.295,0.0369

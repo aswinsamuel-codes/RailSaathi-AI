@@ -1,0 +1,5 @@
+Model,MAE,RMSE,Poisson deviance
+Naive (last week),2.4819,3.5399,6.5987
+Moving average (4 wk),2.073,2.9345,2.4369
+Poisson GLM,2.2494,3.9804,2.3895
+Gradient Boosting (Poisson),2.0975,3.0261,2.3258

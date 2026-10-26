@@ -1,0 +1,7 @@
+Source,Field,Mentioned (%),Recall (%),Recall when mentioned (%),Precision (%)
+Complaint text only,train_no,41.4,41.32,99.79,98.35
+Complaint text only,coach,56.32,52.33,92.92,91.17
+Complaint text only,pnr,18.36,18.33,99.83,98.36
+Text + OCR,train_no,51.0,50.85,99.69,98.66
+Text + OCR,coach,65.22,60.36,92.56,92.25
+Text + OCR,pnr,19.15,19.12,99.81,98.42

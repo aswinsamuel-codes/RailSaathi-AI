@@ -1,0 +1,6 @@
+Input,Macro-F1 (all),Accuracy (all),Accuracy (photo/video),Accuracy (Hinglish)
+"Word n-grams, raw text",0.9012,0.9352,0.9374,0.9374
+Word n-grams + Hinglish/SMS lexicon,0.9016,0.9355,0.9371,0.9374
++ Character n-grams,0.9045,0.9357,0.9374,0.9374
++ OCR text,0.9025,0.9374,0.9425,0.9394
++ Vision tags (full fusion),0.922,0.948,0.9647,0.9498

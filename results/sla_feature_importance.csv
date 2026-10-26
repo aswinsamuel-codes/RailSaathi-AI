@@ -1,0 +1,12 @@
+,AUC drop
+train_age_years,-0.0011
+weekday,-0.0004
+train_type,-0.0003
+hour,-0.0003
+channel,-0.0001
+department,0.0006
+media_type,0.0109
+is_night,0.0187
+zone,0.0229
+category,0.0739
+severity,0.1009

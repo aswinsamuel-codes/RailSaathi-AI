@@ -1,0 +1,10 @@
+{
+  "best_model": "Linear SVM (calibrated)",
+  "target_auto_accuracy": 0.97,
+  "threshold": 0.19,
+  "auto_routed_share": 0.9757944389275075,
+  "auto_routed_accuracy": 0.9702327948098206,
+  "human_review_share": 0.02420556107249255,
+  "accuracy_without_abstention": 0.9504716981132075,
+  "human_review_accuracy_of_model": 0.15384615384615385
+}

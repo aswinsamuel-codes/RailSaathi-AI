@@ -1,0 +1,11 @@
+,value
+complaints,25133
+incidents,20605
+trains,60
+period,2025-01-06 to 2026-09-30
+train_rows,17077
+test_rows,8056
+share_with_photo_or_video,0.40858632077348506
+share_hinglish,0.1821111685831377
+sla_breach_rate,0.2806270640194167
+feedback_given,0.5992519794692237

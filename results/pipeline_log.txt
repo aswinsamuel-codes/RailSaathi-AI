@@ -1,0 +1,129 @@
+
+======================================================================
+Generate synthetic Rail Madad dataset  (generate_dataset.py)
+======================================================================
+25133 complaints, 20605 incidents, 60 trains -> D:\MY works\DSE project\data\raw\rail_madad_complaints.csv
+category
+Coach Cleanliness        4688
+Electrical Equipment     4211
+Water Availability       3624
+Coach Maintenance        2765
+Punctuality              2283
+Catering & Vending       1550
+Bed Roll                 1294
+Security                 1281
+Staff Behaviour          1121
+Refund & Ticketing        883
+Medical Assistance        664
+Women Safety              443
+Divyangjan Facilities     326
+
+======================================================================
+Exploratory data analysis  (eda.py)
+======================================================================
+complaints                                      25133
+incidents                                       20605
+trains                                             60
+period                       2025-01-06 to 2026-09-30
+train_rows                                      17077
+test_rows                                        8056
+share_with_photo_or_video                    0.408586
+share_hinglish                               0.182111
+sla_breach_rate                              0.280627
+feedback_given                               0.599252
+
+======================================================================
+Categorisation, fusion and smart routing  (categorize.py)
+======================================================================
+Complement Naive Bayes {'Accuracy': 0.9317, 'Macro-F1': 0.9063, 'Weighted-F1': 0.9318, 'Dept. routing acc.': 0.9423, 'Train time (s)': 0.0588, 'Latency (ms/complaint)': 0.002}
+Logistic Regression {'Accuracy': 0.9381, 'Macro-F1': 0.9035, 'Weighted-F1': 0.9392, 'Dept. routing acc.': 0.9455, 'Train time (s)': 6.3539, 'Latency (ms/complaint)': 0.002}
+Linear SVM (calibrated) {'Accuracy': 0.9505, 'Macro-F1': 0.9342, 'Weighted-F1': 0.9502, 'Dept. routing acc.': 0.9593, 'Train time (s)': 5.7298, 'Latency (ms/complaint)': 0.0078}
+Random Forest {'Accuracy': 0.929, 'Macro-F1': 0.9038, 'Weighted-F1': 0.9298, 'Dept. routing acc.': 0.9394, 'Train time (s)': 19.295, 'Latency (ms/complaint)': 0.0369}
+                                     Macro-F1 (all)  Accuracy (all)  Accuracy (photo/video)  Accuracy (Hinglish)
+Input                                                                                                           
+Word n-grams, raw text                       0.9012          0.9352                  0.9374               0.9374
+Word n-grams + Hinglish/SMS lexicon          0.9016          0.9355                  0.9371               0.9374
++ Character n-grams                          0.9045          0.9357                  0.9374               0.9374
++ OCR text                                   0.9025          0.9374                  0.9425               0.9394
++ Vision tags (full fusion)                  0.9220          0.9480                  0.9647               0.9498
+{'best_model': 'Linear SVM (calibrated)', 'target_auto_accuracy': 0.97, 'threshold': 0.19, 'auto_routed_share': 0.9757944389275075, 'auto_routed_accuracy': 0.9702327948098206, 'human_review_share': 0.02420556107249255, 'accuracy_without_abstention': 0.9504716981132075, 'human_review_accuracy_of_model': 0.15384615384615385}
+                              n  Accuracy  Mean confidence
+All test complaints      8056.0     0.950            0.906
+Typed text               4144.0     0.939            0.895
+Photo/video              3339.0     0.966            0.921
+Audio (ASR transcript)    573.0     0.941            0.887
+Hinglish                 1453.0     0.950            0.910
+Mixed (contains 'also')  1055.0     0.967            0.875
+
+======================================================================
+Urgency detection and queue simulation  (urgency.py)
+======================================================================
+                                       Accuracy  Macro-F1  Quadratic kappa  Critical recall  Critical+High recall  Under-triage rate  Mean cost
+Method                                                                                                                                         
+Keyword rules only                        0.482     0.358            0.299            0.705                 0.113              0.242      1.078
+Linear SVM                                0.877     0.876            0.873            0.909                 0.883              0.061      0.250
+Logistic Regression (arg-max)             0.867     0.856            0.839            0.909                 0.895              0.064      0.267
+LR + minimum expected cost (proposed)     0.836     0.788            0.738            0.949                 0.969              0.016      0.195
+LR + min. cost + safety lexicon           0.833     0.784            0.733            0.949                 0.969              0.016      0.198
+Severity                       Critical   High  Medium     Low
+Policy                                                        
+AI priority (proposed)             31.9   61.6   195.2  1737.9
+FIFO (current)                    535.1  569.9   572.3   565.4
+Oracle priority (upper bound)      30.2   49.7   154.5  1866.2
+
+======================================================================
+Entity extraction and duplicate grouping  (extraction_dedup.py)
+======================================================================
+             Source    Field  Mentioned (%)  Recall (%)  Recall when mentioned (%)  Precision (%)
+Complaint text only train_no           41.4        41.3                       99.8           98.4
+Complaint text only    coach           56.3        52.3                       92.9           91.2
+Complaint text only      pnr           18.4        18.3                       99.8           98.4
+         Text + OCR train_no           51.0        50.8                       99.7           98.7
+         Text + OCR    coach           65.2        60.4                       92.6           92.3
+         Text + OCR      pnr           19.2        19.1                       99.8           98.4
+{'complaints_with_gps': 6693, 'share_with_gps': 0.2663032666215732, 'nearest_station_accuracy': 0.9976094427013298, 'median_distance_km': 37.64654646394707}
+      method  threshold  pair_precision  pair_recall  pair_F1   ARI  tickets_after_grouping  tickets_before  true_incidents
+   text only       0.05           0.910        0.624    0.741 0.741                    6935            8056            6621
+   text only       0.10           0.929        0.385    0.544 0.544                    7276            8056            6621
+   text only       0.20           0.968        0.208    0.342 0.342                    7566            8056            6621
+   text only       0.30           0.969        0.161    0.277 0.277                    7655            8056            6621
+   text only       0.40           0.969        0.118    0.211 0.211                    7757            8056            6621
+   text only       0.50           0.965        0.076    0.142 0.142                    7854            8056            6621
+   text only       0.70           0.938        0.021    0.041 0.041                    7999            8056            6621
+   text only       1.01           0.000        0.000    0.000 0.000                    8056            8056            6621
+text + coach       0.05           0.923        0.962    0.942 0.942                    6538            8056            6621
+text + coach       0.10           0.945        0.962    0.954 0.954                    6581            8056            6621
+text + coach       0.20           0.964        0.962    0.963 0.963                    6615            8056            6621
+text + coach       0.30           0.967        0.962    0.964 0.964                    6619            8056            6621
+text + coach       0.40           0.974        0.962    0.968 0.968                    6623            8056            6621
+text + coach       0.50           0.979        0.962    0.970 0.970                    6624            8056            6621
+text + coach       0.70           0.981        0.962    0.971 0.971                    6627            8056            6621
+text + coach       1.01           0.982        0.962    0.972 0.972                    6630            8056            6621
+
+======================================================================
+Predictive maintenance forecasting  (predictive_maintenance.py)
+======================================================================
+                               MAE   RMSE  Poisson deviance
+Model                                                      
+Naive (last week)            2.483  3.554             6.516
+Moving average (4 wk)        2.087  2.962             2.487
+Poisson GLM                  2.264  3.988             2.453
+Gradient Boosting (Poisson)  2.107  3.029             2.373
+{'model': 'Gradient Boosting (Poisson)', 'k': 8, 'precision_at_k_deteriorating': 0.5, 'random_baseline': 0.13333333333333333, 'overlap_with_actual_future_top_k': 0.625, 'flagged_trains': ['18648', '15300', '18033', '20741', '12336', '17576', '19655', '18911']}
+
+======================================================================
+Sentiment, SLA-breach risk and monitoring  (sentiment_sla.py)
+======================================================================
+Sentiment: {'n_feedback_test': 4795, 'accuracy': 0.8083420229405631, 'macro_F1': 0.7588041679636256, 'negative_recall': 0.8688845401174168}
+                       ROC-AUC  PR-AUC  Breaches caught in top-20% risk
+Model                                                                  
+Prior rate (no model)    0.500   0.283                              NaN
+Logistic Regression      0.731   0.516                              NaN
+Gradient Boosting        0.718   0.496                            0.364
+Monthly correlation breach vs negative sentiment: 0.601
+
+======================================================================
+Pipeline architecture diagram  (architecture.py)
+======================================================================
+
+Pipeline finished in 103 s. See results/ and figures/.
