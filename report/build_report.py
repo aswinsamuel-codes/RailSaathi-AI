@@ -19,11 +19,11 @@ from docx.shared import Inches, Mm, Pt, RGBColor
 
 ROOT = Path(__file__).resolve().parents[1]
 FIG, RES = ROOT / "figures", ROOT / "results"
-OUT = ROOT / "report" / "Rail_Madad_AI_Complaint_Management_Report.docx"
+OUT = ROOT / "report" / "RailSaathi_AI_Report.docx"
 
-STUDENT = "[Your Name]"
-REGNO = "[Register Number]"
-GITHUB = "https://github.com/<your-username>/rail-madad-ai-complaints"
+STUDENT = "Aswin Samuel.A"
+REGNO = "URK24CS9014"
+GITHUB = "https://github.com/aswinsamuel-codes/RailSaathi-AI"
 
 R = lambda name: pd.read_csv(RES / name, index_col=0)  # noqa: E731
 J = lambda name: json.loads((RES / f"{name}.json").read_text())  # noqa: E731
@@ -203,7 +203,8 @@ def build():
         ("Department of Computer Science and Engineering", 13, False, 30),
         ("23CS2024 – Data Science Ecosystem", 13, True, 4),
         ("Project Based Learning – 2026-2027 Odd Semester", 12, False, 40),
-        ("AI-POWERED COMPLAINT MANAGEMENT FOR RAIL MADAD:", 18, True, 2),
+        ("RailSaathi AI", 22, True, 6),
+        ("AI-Powered Complaint Management for Rail Madad:", 16, True, 2),
         ("Multimodal Categorisation, Cost-Sensitive Prioritisation", 15, True, 2),
         ("and Predictive Maintenance Analytics", 15, True, 24),
         ("Smart India Hackathon 2024 – Problem Statement SIH1711", 12, False, 2),
@@ -335,14 +336,14 @@ def build():
 
     # 5 ---------------------------------------------------------------------
     rp.h1("5. Proposed Solution")
-    rp.para("The proposed system (Fig. 1) is an analytical pipeline that sits behind the existing Rail Madad "
+    rp.para("The proposed system, named RailSaathi AI (Fig. 1), is an analytical pipeline that sits behind the existing Rail Madad "
             "front end. Every complaint, whatever its medium, is converted into a single fused document: typed "
             "text or an ASR transcript, OCR text from attached images, tags from an image classifier, and "
             "structured metadata (channel, media type, train type, time). Three models act on this document: a "
             "calibrated categoriser that decides the department, a cost-sensitive urgency model that decides the "
             "priority, and a grouping step that merges duplicate reports. An analytics layer forecasts "
             "maintenance hotspots, predicts SLA breaches and tracks sentiment.")
-    rp.figure("fig01_architecture", "Architecture of the proposed AI-assisted Rail Madad complaint pipeline.", width=5.8)
+    rp.figure("fig01_architecture", "Architecture of RailSaathi AI, the proposed AI-assisted Rail Madad complaint pipeline.", width=5.8)
     rp.para("The novel elements, compared with a plain text classifier, are: (i) multimodal late-fusion of text, "
             "OCR and vision tags in one sparse feature space; (ii) confidence-aware routing with a tunable accuracy "
             "target; (iii) a minimum-expected-cost severity rule evaluated with a discrete-event queue simulation; "
@@ -579,7 +580,7 @@ def build():
 
     # 10 --------------------------------------------------------------------
     rp.h1("10. Conclusion")
-    rp.para("This project designed and evaluated a complete data-science pipeline for SIH1711 that turns raw, "
+    rp.para("This project designed and evaluated RailSaathi AI, a complete data-science pipeline for SIH1711 that turns raw, "
             "multimodal passenger complaints into routed, prioritised and de-duplicated tickets, and turns the "
             "complaint stream into maintenance and service-quality intelligence. A calibrated linear SVM on fused "
             "text, OCR and image tags categorised 95% of complaints correctly. Confidence-aware routing automated "

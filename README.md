@@ -1,4 +1,8 @@
-# AI-Powered Complaint Management for Rail Madad
+# RailSaathi AI
+
+### AI-Powered Complaint Management for Rail Madad
+
+**Author:** Aswin Samuel.A (URK24CS9014), III B.Tech CSE, Karunya Institute of Technology and Sciences
 
 **Smart India Hackathon 2024 – Problem Statement SIH1711 (Ministry of Railways)**
 Course project for *23CS2024 – Data Science Ecosystem*.

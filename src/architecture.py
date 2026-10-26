@@ -38,7 +38,7 @@ def main():
         else:
             p, q = anchor(a, "r"), anchor(b, "l")
         ax.add_patch(FancyArrowPatch(p, q, arrowstyle="-|>", mutation_scale=12, lw=1, color="#404040"))
-    ax.set_title("Proposed AI-assisted Rail Madad complaint pipeline", fontsize=12)
+    ax.set_title("RailSaathi AI: proposed AI-assisted Rail Madad complaint pipeline", fontsize=12)
     savefig(fig, "fig01_architecture")
 
 
