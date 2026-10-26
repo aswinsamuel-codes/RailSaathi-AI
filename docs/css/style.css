@@ -289,3 +289,7 @@ dialog#lightbox p { color: var(--ink-2); font-size: 14px; }
   .explore, .demo { min-height: auto; padding-top: 70vh; padding-bottom: 40px; }
   .panel { max-width: none; }
 }
+
+/* screenshot mode (?shot=1): demo first, no scrolling */
+.shot #top, .shot #explore { display: none; }
+.shot .demo { min-height: auto; padding-top: 84px; }

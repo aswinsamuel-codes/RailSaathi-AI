@@ -118,6 +118,16 @@
     window.dispatchEvent(new CustomEvent("rs:classified", { detail: r }));
   }
   $("#analyse").addEventListener("click", analyse);
+  // shareable demo links: index.html?q=<complaint text>
+  // add &shot=1 to show the demo at the top without scrolling (used for report screenshots)
+  const params = new URLSearchParams(location.search);
+  const q = params.get("q");
+  if (params.get("shot")) document.body.classList.add("shot");
+  if (q) {
+    $("#complaint").value = q;
+    analyse();
+    if (!params.get("shot")) $("#demo").scrollIntoView({ behavior: "auto" });
+  }
   $("#complaint").addEventListener("keydown", (ev) => {
     if (ev.key === "Enter" && (ev.ctrlKey || ev.metaKey)) analyse();
   });
