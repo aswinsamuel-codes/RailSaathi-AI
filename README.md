@@ -11,6 +11,16 @@ The project builds a data-science pipeline that turns raw, multimodal passenger 
 
 ![Pipeline](figures/fig01_architecture.png)
 
+## Interactive website
+
+`docs/` contains a WebGL website (Three.js) for the project:
+
+- **3D complaint galaxy**: 2,600 real test complaints placed by a 3D t-SNE of the classifier scores. Drag to rotate, hover to read a complaint, filter by category, or show only the misclassified ones.
+- **Live demo**: type a complaint (English or Hinglish), optionally add OCR text and image tags, and the model classifies it **in your browser**. It returns category, department, cost-aware priority, routing decision and extracted entities, and the complaint then flies into its cluster in 3D. The JavaScript port reproduces the Python model exactly (`node docs/js/parity_test.js`: 300/300 identical predictions).
+- Animated results charts, a pipeline overview with 3D tilt cards, and a figure gallery.
+
+Run it locally with `python -m http.server 8765 --directory docs` and open http://localhost:8765. To publish it, enable **GitHub Pages → Deploy from branch → main → /docs**.
+
 ## Key results (6-month held-out test set)
 
 | Module | Method | Result |
@@ -51,12 +61,14 @@ The generated CSV is included in `data/raw/`, and running the generator reproduc
 │   ├── extraction_dedup.py     # entity extraction, GPS, duplicate grouping
 │   ├── predictive_maintenance.py
 │   ├── sentiment_sla.py        # sentiment, SLA-breach risk, KPI monitoring
-│   └── architecture.py         # pipeline diagram
+│   ├── architecture.py         # pipeline diagram
+│   └── export_web.py           # browser model, 3D galaxy and results for docs/
 ├── data/raw/                   # rail_madad_complaints.csv, train_master.csv
 ├── data/processed/             # test-set predictions
 ├── results/                    # all metric tables (CSV/JSON) + pipeline_log.txt
 ├── figures/                    # 300-dpi figures
-└── report/                     # report (DOCX/PDF) and its generator
+├── report/                     # report (DOCX/PDF) and its generator
+└── docs/                       # WebGL website (index.html, js/, css/, assets/)
 ```
 
 ## How to run

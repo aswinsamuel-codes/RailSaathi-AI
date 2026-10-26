@@ -16,6 +16,7 @@ STEPS = [
     ("Predictive maintenance forecasting", "predictive_maintenance.py"),
     ("Sentiment, SLA-breach risk and monitoring", "sentiment_sla.py"),
     ("Pipeline architecture diagram", "architecture.py"),
+    ("Export data and model for the website (docs/)", "export_web.py"),
 ]
 
 if __name__ == "__main__":
